@@ -1,0 +1,12 @@
+<nav class="bg-white border-b border-purple-900 p-6">
+  <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+    <h1 class="text-3xl font-space font-bold text-purple-900 tracking-tight mb-4 md:mb-0">
+      <a href="/">OH/ELIXIR</a>
+    </h1>
+    <div class="space-x-8">
+      <a href="{{ if .IsHome }}#about{{ else }}/#about{{ end }}" class="text-purple-900 hover:text-purple-600 font-space tracking-wide font-bold text-lg">ABOUT</a>
+      <a href="/events" class="text-purple-900 hover:text-purple-600 font-space tracking-wide font-bold text-lg">EVENTS</a>
+      <a href="#join" class="text-purple-900 hover:text-purple-600 font-space tracking-wide font-bold text-lg">JOIN</a>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,12 @@
+baseURL = 'https://ohioelixir.org/'
+languageCode = 'en-us'
+title = 'Ohio Elixir User Group'
+
+[params]
+description = "Ohio's dynamic community of Elixir enthusiasts."
+newsletterEndpoint = "#"
+
+[params.social]
+bluesky = "https://bsky.app/profile/ohioelixir.bsky.social"
+github = "https://github.com/ohioelixir"
+discord = "https://discord.com/invite/JVVSwSNpK6"
