@@ -2,7 +2,7 @@
 title: "Show & Tell: Elixir in Production"
 date: 2025-01-29T13:00:00-05:00
 eventDate: 2024-12-18T18:30:00-05:00
-draft: true
+draft: false
 description: "Three teams share their experiences running Elixir applications in production, including challenges faced and lessons learned."
 ---
 

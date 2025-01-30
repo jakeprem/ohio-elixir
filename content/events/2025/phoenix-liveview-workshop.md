@@ -2,7 +2,7 @@
 title: "Phoenix LiveView Workshop"
 date: 2025-01-22T13:00:00-05:00
 eventDate: 2025-02-15T13:00:00-05:00
-draft: true
+draft: false
 description: "A hands-on session where we'll build a real-time application using Phoenix LiveView. Perfect for developers looking to level up their Elixir skills."
 ---
 

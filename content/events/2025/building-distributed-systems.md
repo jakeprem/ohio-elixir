@@ -1,8 +1,8 @@
 ---
 title: "Building Distributed Systems with Elixir"
-date: 2025-01-29T13:00:00-05:00
+date: 2025-01-31T13:00:00-05:00
 eventDate: 2025-03-22T18:30:00-05:00
-draft: true
+draft: false
 description: "Join us for an in-depth technical talk on building distributed systems using Elixir and OTP principles."
 ---
 
