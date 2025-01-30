@@ -1,0 +1,43 @@
+{{ $baseUrl := printf "https://github.com/%s/%s/new/main/content/events" .Site.Params.github.username
+.Site.Params.github.repo }}
+{{ $template := `---
+title: Your Talk Title
+description: Brief description of your talk
+date: YYYY-MM-DDTHH:MM:SSZ
+eventDate:
+draft: true
+tags: [tag1, tag2]
+---
+
+A brief description of your talk
+
+## Your first header
+
+- A point
+- A point
+- A point
+` }}
+
+<div class="speak-button-container">
+    <a href="{{ $baseUrl }}?filename=YYYY/your-talk-title.md&value={{ $template | urlquery }}&message=Add+new+talk:+Your+Talk+Title&description=Adding+a+new+talk+proposal&pr=true"
+        class="px-6 py-3 bg-purple-900 text-white font-space font-bold rounded hover:bg-purple-700 transition-colors speak-button"
+        target="_blank">
+        WANT TO SPEAK? →
+    </a>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const today = new Date();
+        const timestamp = today.toISOString();
+        const year = today.getFullYear().toString();
+
+        const speakButtons = document.querySelectorAll('.speak-button');
+        speakButtons.forEach(button => {
+            const newHref = button.getAttribute('href')
+                .replace('YYYY', year)
+                .replace('date: YYYY-MM-DDTHH:MM:SSZ', `date: ${timestamp}`);
+            button.setAttribute('href', newHref);
+        });
+    });
+</script>

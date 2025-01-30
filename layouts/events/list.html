@@ -1,15 +1,54 @@
 {{ define "main" }}
 <div class="container mx-auto px-4 py-16">
-  <h2 class="text-4xl font-bold mb-12 font-space text-purple-900">ALL_EVENTS</h2>
-  <div class="grid md:grid-cols-2 gap-8">
-    {{ range .Pages }}
-    <div class="border-t-4 border-purple-900 p-8 bg-gray-50">
-      <div class="font-space text-sm text-purple-600 mb-4">{{ dateFormat "Jan 02, 2006" .Params.eventDate }}</div>
-      <h4 class="text-2xl font-bold mb-4 font-space">{{ .Title }}</h4>
-      <p class="text-gray-700 leading-relaxed">{{ .Description }}</p>
-      <a href="{{ .RelPermalink }}" class="mt-4 inline-block text-purple-900 font-space hover:text-purple-600">READ MORE →</a>
-    </div>
-    {{ end }}
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-16">
+    <h1 class="text-5xl font-bold font-space text-purple-900 pb-4">EVENTS</h1>
+    {{ partial "speak-button.html" . }}
   </div>
+
+  <!-- Future Events Section -->
+  {{ $now := now.Format "2006-01-02" }}
+  {{ $events := where .Site.RegularPages "Type" "events" }}
+  {{ $futureEvents := where $events "Params.eventDate" "ge" $now }}
+  {{ $sortedFutureEvents := sort $futureEvents "Params.eventDate" "asc" }}
+  {{ if $sortedFutureEvents }}
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold mb-8 font-space text-purple-600">Upcoming</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      {{ range $sortedFutureEvents }}
+      <div class="border-t-4 border-purple-900 p-8 bg-gray-50 hover:bg-gray-100 transition-colors">
+        <div class="font-space text-base font-bold text-purple-600 mb-4">
+          {{ with .Params.eventDate }}{{ dateFormat "Jan 02, 2006" . }}{{ end }}
+        </div>
+        <h4 class="text-2xl font-bold mb-4 font-space text-purple-900">{{ .Title }}</h4>
+        <p class="text-gray-700 leading-relaxed text-lg">{{ .Description }}</p>
+        <a href="{{ .RelPermalink }}"
+          class="mt-6 inline-block text-purple-900 font-space hover:text-purple-600 font-bold">READ MORE →</a>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  <!-- Past Events Section -->
+  {{ $pastEvents := where $events "Params.eventDate" "lt" $now }}
+  {{ $sortedPastEvents := sort $pastEvents "Params.eventDate" "desc" }}
+  {{ if $sortedPastEvents }}
+  <section>
+    <h2 class="text-3xl font-bold mb-8 font-space text-purple-600">Past</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      {{ range $sortedPastEvents }}
+      <div class="border-t-4 border-purple-900 p-8 bg-gray-50 hover:bg-gray-100 transition-colors">
+        <div class="font-space text-base font-bold text-purple-600 mb-4">
+          {{ with .Params.eventDate }}{{ dateFormat "Jan 02, 2006" . }}{{ end }}
+        </div>
+        <h4 class="text-2xl font-bold mb-4 font-space text-purple-900">{{ .Title }}</h4>
+        <p class="text-gray-700 leading-relaxed text-lg">{{ .Description }}</p>
+        <a href="{{ .RelPermalink }}"
+          class="mt-6 inline-block text-purple-900 font-space hover:text-purple-600 font-bold">READ MORE →</a>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
 </div>
 {{ end }}

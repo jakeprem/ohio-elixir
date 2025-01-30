@@ -10,3 +10,7 @@ newsletterEndpoint = "#"
 bluesky = "https://bsky.app/profile/ohioelixir.bsky.social"
 github = "https://github.com/ohioelixir"
 discord = "https://discord.com/invite/JVVSwSNpK6"
+
+[params.github]
+username = "jakeprem"
+repo = "ohio-elixir"
